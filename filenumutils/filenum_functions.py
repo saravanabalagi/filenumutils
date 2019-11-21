@@ -3,7 +3,7 @@ import re
 
 
 # All directories are files, but not all files are directories
-def get_last_file_number(path=None, prefix='', extension='', folder=False):
+def get_last_file_number(path: str = None, prefix: str = '', extension: str = '', folder: bool = False) -> int:
 
     if path is None:
         path = os.getcwd()
@@ -21,5 +21,5 @@ def get_last_file_number(path=None, prefix='', extension='', folder=False):
 
 # For those files that are directories
 # suffix untested
-def get_last_folder_number(path=None, prefix='', suffix=''):
+def get_last_folder_number(path: str = None, prefix: str = '', suffix: str = '') -> int:
     return get_last_file_number(path=path, prefix=prefix, extension=suffix, folder=True)
