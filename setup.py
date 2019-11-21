@@ -30,5 +30,6 @@ setup(
     ],
     packages=["filenumutils"],
     include_package_data=True,
-    install_requires=[]
+    install_requires=[],
+    tests_requires=["pytest"],
 )
