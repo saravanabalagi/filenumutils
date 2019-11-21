@@ -48,7 +48,7 @@ folders_list = [
 ]
 
 expected_numbers = [-1, 1, 2]
-expected_names = ['test_0', 'test_02', 'test_03']
+expected_names = ['test_00', 'test_02', 'test_03']
 prefix_list = ['test_' for _ in folders_list]
 
 
