@@ -44,11 +44,13 @@ def _remove_files(parent_folder_path: str, filenames: list) -> None:
 folders_list = [
     [],
     ['test_01', 'tset_02'],
-    ['test_001', 'test_02', 'test_2', 'test_2_4']
+    ['test_001', 'test_02', 'test_2', 'test_2_4'],
+    ['test_001', 'test_002', 'test_005'],
+    ['test_0001', 'test_0020', 'test_0005'],
 ]
 
-expected_numbers = [-1, 1, 2]
-expected_names = ['test_00', 'test_02', 'test_03']
+expected_numbers = [-1, 1, 2, 5, 20]
+expected_names = ['test_00', 'test_02', 'test_03', 'test_006', 'test_0021']
 prefix_list = ['test_' for _ in folders_list]
 
 
