@@ -56,6 +56,7 @@ get_next_folder(prefix="train_", create=True)       # Output: train_0000 (Folder
 | `prefix` | "" | Match only files with given prefix |
 | `suffix` | "" | Match only files with given extension/suffix |
 | `default_number_width` | 2 | When no numbering pattern is found, output number will be `default_number_width` digits |
+| `return_with_path` | True | By default, return `path/new_folder_name`. If false, return only `new_folder_name`.  |
 
 ## Contributing
 

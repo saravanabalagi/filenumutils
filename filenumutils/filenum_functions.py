@@ -13,8 +13,18 @@ def get_last_folder_number(path: str = os.getcwd(), prefix: str = '', suffix: st
     return get_last_file_number(path=path, prefix=prefix, suffix=suffix, folder=True)
 
 
-def get_next_file(path: str = os.getcwd(), prefix: str = '', suffix: str = '',
-                  create: bool = False, default_number_width: int = 2, folder: bool = False) -> str:
+def get_next_file(path: str = None, prefix: str = '', suffix: str = '',
+                  create: bool = False, default_number_width: int = 2,
+                  folder: bool = False, return_with_path: bool = True) -> str:
+
+    # Store original parameter to see if path parameter was passed later
+    original_path_passed = path
+    if path is None:
+        path = os.getcwd()
+    else:
+        if not os.path.exists(path):
+            raise ValueError(f'Given path "{path}" does not exist!')
+
     root, folders, files = next(os.walk(path))
     pattern = _get_pattern(prefix, suffix)
 
@@ -37,7 +47,14 @@ def get_next_file(path: str = os.getcwd(), prefix: str = '', suffix: str = '',
         else:
             with open(full_path_filename, 'w'):
                 pass
-    return filename
+
+    if return_with_path and original_path_passed is not None:
+        return full_path_filename
+
+    # if return_with_path is false
+    # or if original_path_passed is None
+    else:
+        return filename
 
 
 def get_next_folder(path: str = os.getcwd(), prefix: str = '', suffix: str = '', create: bool = False) -> str:
