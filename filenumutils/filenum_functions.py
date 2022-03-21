@@ -15,7 +15,7 @@ def get_last_folder_number(path: str = os.getcwd(), prefix: str = '', suffix: st
 
 def get_next_file(path: str = None, prefix: str = '', suffix: str = '',
                   create: bool = False, default_number_width: int = 2,
-                  folder: bool = False, return_with_path: bool = True) -> str:
+                  folder: bool = False, full_path: bool = False) -> str:
 
     # Store original parameter to see if path parameter was passed later
     original_path_passed = path
@@ -48,14 +48,15 @@ def get_next_file(path: str = None, prefix: str = '', suffix: str = '',
             with open(full_path_filename, 'w'):
                 pass
 
-    if return_with_path and original_path_passed is not None:
+    if full_path and original_path_passed is not None:
         return full_path_filename
 
-    # if return_with_path is false
+    # if full_path is false
     # or if original_path_passed is None
     else:
         return filename
 
 
-def get_next_folder(path: str = os.getcwd(), prefix: str = '', suffix: str = '', create: bool = False) -> str:
-    return get_next_file(path, prefix, suffix, create=create, folder=True)
+def get_next_folder(path: str = os.getcwd(), prefix: str = '', suffix: str = '',
+                    create: bool = False, full_path: bool = False) -> str:
+    return get_next_file(path, prefix, suffix, create=create, folder=True, full_path=full_path)

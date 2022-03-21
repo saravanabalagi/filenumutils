@@ -4,7 +4,7 @@
 ![Wheel Status](https://img.shields.io/pypi/wheel/filenumutils)
 ![Pypi Licence](https://img.shields.io/pypi/l/filenumutils)
 
-Python tools for finding last file or folder number in a directory based on extension, prefix or suffix.
+Python tools to find last file/folder number in a int indexed file/folder with specified extension, prefix and/or suffix. Also allows to get/create next folder, e.g if dir contains `train_00` and `train_01`, it creates `train_02`.
 
 ## Installation
 
@@ -16,10 +16,18 @@ pip install filenumutils
 
 ## Usage
 
-If your current directory has the following files and folders
+Assuming the current working directory has the following structure
 
-- folders: [`train_00`, `train_01`, `train_02`, `train_03`, `train_04`]
-- files: [`model_00.py`, `model_01.py`, `model_02.py`]
+```
+current_dir
+├─ train_00
+├─ train_01
+├─ train_03
+├─ train_04
+├─ model_00.py
+├─ model_01.py
+└─ model_02.py
+```
 
 ### Get Last Folder / File Number
 
@@ -36,8 +44,8 @@ If no such file/folder with given prefix exists, it outputs -1
 ```python
 from filenumutils import get_next_file, get_next_folder
 get_next_file(prefix="model_")                      # Output: model_03.py
+get_next_folder(prefix="test_")                     # Output: test_00
 get_next_folder(prefix="train_", create=True)       # Output: train_05 (Folder is created)
-get_next_folder(prefix="test_", create=True)        # Output: test_00 (Folder is created)
 ```
 
 If no such folder with given prefix exists, it outputs `prefix_00`. 
@@ -56,7 +64,7 @@ get_next_folder(prefix="train_", create=True)       # Output: train_0000 (Folder
 | `prefix` | "" | Match only files with given prefix |
 | `suffix` | "" | Match only files with given extension/suffix |
 | `default_number_width` | 2 | When no numbering pattern is found, output number will be `default_number_width` digits |
-| `return_with_path` | True | By default, return `path/new_folder_name`. If false, return only `new_folder_name`.  |
+| `full_path` | True | By default, returns `new_folder_name`. If True, returns `path/new_folder_name`.  |
 
 ## Contributing
 

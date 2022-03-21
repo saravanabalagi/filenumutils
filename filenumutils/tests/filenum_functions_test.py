@@ -76,15 +76,19 @@ def test_get_last_file_number(files, prefix, expected_number):
 def test_get_next_folder(folders, prefix, expected_folder_name):
     global test_folder_path
     _create_folders(test_folder_path, folders)
+    output_folder_string_full_path = get_next_folder(test_folder_path, prefix=prefix, full_path=True)
     output_folder_string = get_next_folder(test_folder_path, prefix=prefix)
     _remove_folders(test_folder_path, folders)
     assert (output_folder_string == expected_folder_name)
+    assert (output_folder_string_full_path == os.path.join(test_folder_path, expected_folder_name))
 
 
 @pytest.mark.parametrize("files, prefix, expected_filename", zip(folders_list, prefix_list, expected_names))
 def test_get_next_file(files, prefix, expected_filename):
     global test_folder_path
     _create_files(test_folder_path, files)
+    output_folder_string_full_path = get_next_file(test_folder_path, prefix=prefix, full_path=True)
     output_folder_string = get_next_file(test_folder_path, prefix=prefix)
     _remove_files(test_folder_path, files)
     assert (output_folder_string == expected_filename)
+    assert (output_folder_string_full_path == os.path.join(test_folder_path, expected_filename))

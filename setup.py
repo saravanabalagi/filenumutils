@@ -12,8 +12,8 @@ README = (HERE / "README.md").read_text()
 setup(
     name="filenumutils",
     version=__version__,
-    description="Python tools to print strings to markdown file with styles. "
-                "Also allows printing dicts and lists to table",
+    description="Python tools to find last file/folder number in a int indexed file/folder with specified extension, prefix and/or suffix. "
+                "Also allows to create next folder, e.g if dir contains train_00 and train_01, it creates train_02",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/saravanabalagi/filenumutils",
